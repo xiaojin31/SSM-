@@ -1,0 +1,56 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <context:component-scan base-package="controller"/>
+    <context:component-scan base-package="mapper"/>
+    <context:component-scan base-package="model"/>
+    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="util"/>
+    <mvc:annotation-driven/>
+    <!--<mvc:view-controller path="/" view-name="index"/>-->
+
+    <!--上传文件-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!-- 视图解析器，JSP-->
+    <!-- InternalResourceViewResolver 将使用定义的规则来解决视图名称。
+    按照上述定义的规则，一个名称为 hello 的逻辑视图将发送给位于 /WEB-INF/jsp/hello.jsp 中实现的视图。 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+        <!-- 设置前缀，即视图所在的路径 -->
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <!-- 设置后缀，即视图的扩展名 -->
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--&lt;!&ndash; 定义容器启动时执行的初始化方法 &ndash;&gt;-->
+    <!--<bean id="testInitializingBean" class="util.MyUtil" init-method="generateGeneCountAndIndexOfChr"></bean>-->
+
+    <!--&lt;!&ndash;配置拦截器 &ndash;&gt;-->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--<mvc:mapping path="/*"/>-->
+            <!--<bean class="interceptor.LoginInterceptor">-->
+                <!--<property name="excludedUrls">-->
+                    <!--<list>-->
+                        <!--&lt;!&ndash;<value>/searchTitle.do</value>&ndash;&gt;-->
+                        <!--&lt;!&ndash;拦截器url位置示例如上&ndash;&gt;-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+</beans>

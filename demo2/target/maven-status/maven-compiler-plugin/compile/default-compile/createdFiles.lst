@@ -1,0 +1,13 @@
+controller\UserController.class
+mapper\UserInfoMapper.class
+service\UserService.class
+controller\TestController.class
+util\DynamicDataSource.class
+mapper\UserMapper.class
+util\DBContextHolder.class
+util\DataSource.class
+model\UserInfo.class
+service\TestService.class
+util\MyUtil.class
+model\User.class
+util\DataSourceAspect.class
